@@ -1,0 +1,439 @@
+/* =========================================================
+   catalogo.css — Home catalogo con hero e pack
+   ========================================================= */
+
+/* ----- Hero Section -----
+   HERO IMAGE: inserire immagine 1920x1080px in formato JPG o PNG
+   Percorso atteso: webapp/images/hero-gtavi.jpg
+   La sezione è alta 100vh e usa l'immagine come background-image.
+   --------------------------------------------------------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-color: #08081a;         /* fallback se l'immagine manca */
+    background-image: url('../images/hero-gtavi.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+/* Sfumatura bottom-up per la leggibilità del testo */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13,13,26,0.05) 0%,
+        rgba(13,13,26,0.2)  40%,
+        rgba(13,13,26,0.85) 80%,
+        rgba(13,13,26,1)    100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+.hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--accent-orange);
+}
+
+.hero-title {
+    font-size: clamp(4rem, 10vw, 9rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: 36px;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-release {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    z-index: 2;
+    text-align: right;
+}
+.hero-release-label {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+.hero-release-date {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--accent-orange);
+    letter-spacing: 0.08em;
+}
+
+/* ----- Scroll indicator ----- */
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: bounceDown 2s infinite;
+}
+.hero-scroll::after {
+    content: '↓';
+    font-size: 1.2rem;
+    color: var(--accent-orange);
+}
+
+@keyframes bounceDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ----- Sezione Pack ----- */
+.packs-section {
+    padding: 100px 24px;
+    background: var(--bg-primary);
+}
+
+.packs-header {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    text-align: center;
+}
+
+.packs-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* ----- Card Pack ----- */
+.pack-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    /* Scroll reveal — stato iniziale */
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.pack-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease,
+                border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pack-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-orange);
+    box-shadow: var(--shadow-glow-o);
+}
+
+/* Edizione evidenziata (centrale) */
+.pack-card.featured {
+    border-color: var(--accent-pink);
+    position: relative;
+}
+.pack-card.featured::before {
+    content: 'PIÙ POPOLARE';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 4px 16px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    white-space: nowrap;
+}
+.pack-card.featured:hover { box-shadow: var(--shadow-glow-p); }
+
+.pack-card-header {
+    padding: 32px 32px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.pack-edition-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    margin-bottom: 12px;
+}
+.pack-card.featured .pack-edition-tag { color: var(--accent-pink); }
+
+.pack-name {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.pack-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.pack-price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 20px;
+}
+.pack-price {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+.pack-price-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ----- Contenuti pack ----- */
+.pack-card-body {
+    padding: 28px 32px;
+    flex: 1;
+}
+
+.pack-contents-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.pack-contents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pack-content-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+.pack-content-item::before {
+    content: '✓';
+    color: var(--accent-orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.pack-card.featured .pack-content-item::before { color: var(--accent-pink); }
+
+/* ----- Footer pack ----- */
+.pack-card-footer {
+    padding: 24px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pack-card-footer .btn { text-align: center; }
+
+.btn-pack-primary {
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    width: 100%;
+    font-family: var(--font-body);
+}
+.btn-pack-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-o);
+    color: #fff;
+}
+
+.btn-pack-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    padding: 11px 24px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    width: 100%;
+    font-family: var(--font-body);
+}
+.btn-pack-secondary:hover {
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    background: rgba(255,107,53,0.06);
+    color: var(--accent-orange);
+}
+
+/* ----- Pulsanti admin inline sul pack ----- */
+.pack-admin-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 32px;
+    border-top: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+}
+
+/* ----- Animazione delay per i 3 pack ----- */
+.pack-card:nth-child(1) { transition-delay: 0s; }
+.pack-card:nth-child(2) { transition-delay: 0.15s; }
+.pack-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* ----- Messaggio "nessuna edizione" ----- */
+.no-editions {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   RESPONSIVE catalogo
+   ========================================================= */
+
+/* Tablet: 2 colonne pack */
+@media (max-width: 1024px) {
+    .packs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .packs-grid .pack-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 420px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-title {
+        font-size: clamp(2.4rem, 14vw, 5.5rem);
+    }
+
+    .hero-content {
+        order: 1;
+        margin-top: auto;
+        padding: 0 20px 20px;
+    }
+
+    .hero-release {
+        position: static;
+        transform: none;
+        text-align: center;
+        order: 2;
+        padding: 16px 20px 60px;
+        margin-top: 0;
+    }
+
+    .hero-release-date {
+        font-size: 2.4rem;
+    }
+
+    .hero-sub { font-size: 0.95rem; margin-bottom: 24px; }
+
+    .packs-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .packs-grid .pack-card:last-child:nth-child(odd) {
+        grid-column: auto !important;
+        max-width: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .packs-section { padding: 60px 16px; }
+}

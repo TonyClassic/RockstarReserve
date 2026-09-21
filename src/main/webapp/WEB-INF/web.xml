@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>RockstarReserve</display-name>
+
+    <!-- ================================================================ -->
+    <!--  Parametri globali                                                 -->
+    <!-- ================================================================ -->
+
+    <context-param>
+        <param-name>adminUsername</param-name>
+        <param-value>tonyscogna39@gmail.com</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>adminPassword</param-name>
+        <param-value>TonyGTA6Login</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>dataUscitaGtaVI</param-name>
+        <param-value>19 novembre 2026</param-value>
+    </context-param>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Autenticazione                                          -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.auth.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrazioneServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.auth.RegistrazioneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrazioneServlet</servlet-name>
+        <url-pattern>/registrazione</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Catalogo                                                -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.catalogo.CatalogoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <url-pattern>/catalogo</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Carrello                                                -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>CarrelloServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.carrello.CarrelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarrelloServlet</servlet-name>
+        <url-pattern>/carrello</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Checkout / Ordini                                       -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.ordine.CheckoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MieiOrdiniServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.ordine.MieiOrdiniServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MieiOrdiniServlet</servlet-name>
+        <url-pattern>/miei-ordini</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Info GTA VI                                             -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>InfoServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.catalogo.InfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfoServlet</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Servlet — Area Admin                                              -->
+    <!-- ================================================================ -->
+
+    <servlet>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.admin.AdminLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/admin/login-old</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminEdizioniServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.admin.AdminEdizioniServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminEdizioniServlet</servlet-name>
+        <url-pattern>/admin/edizioni</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminOrdiniServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.admin.AdminOrdiniServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminOrdiniServlet</servlet-name>
+        <url-pattern>/admin/ordini</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUtentiServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.admin.AdminUtentiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUtentiServlet</servlet-name>
+        <url-pattern>/admin/utenti</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.admin.AdminLogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <url-pattern>/admin/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConfermaOrdineServlet</servlet-name>
+        <servlet-class>com.rockstarreserve.control.ordine.ConfermaOrdineServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfermaOrdineServlet</servlet-name>
+        <url-pattern>/conferma-ordine</url-pattern>
+    </servlet-mapping>
+
+    <!-- ================================================================ -->
+    <!--  Welcome file                                                      -->
+    <!-- ================================================================ -->
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ================================================================ -->
+    <!--  Pagine di errore                                                  -->
+    <!-- ================================================================ -->
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/view/common/error404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/view/common/error500.jsp</location>
+    </error-page>
+
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/rockstarreserve</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <!-- Filtro autenticazione token -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.rockstarreserve.control.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/checkout</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/miei-ordini</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

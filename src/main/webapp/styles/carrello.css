@@ -1,0 +1,282 @@
+/* =========================================================
+   carrello.css — Pagina carrello
+   ========================================================= */
+
+.carrello-page {
+    padding: 60px 24px 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.carrello-page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.carrello-page-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 48px;
+}
+
+/* ----- Tabella ----- */
+.carrello-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+}
+
+.carrello-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+}
+
+.carrello-table thead tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.carrello-table th {
+    padding: 16px 24px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.carrello-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.carrello-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.carrello-table tbody tr {
+    transition: background var(--transition);
+}
+.carrello-table tbody tr:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+/* ----- Cella prodotto ----- */
+.cart-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.cart-product-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+.cart-product-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: 280px;
+}
+
+/* ----- Prezzo ----- */
+.cart-price {
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* ----- Quantità ----- */
+.qty-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-input {
+    width: 60px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    text-align: center;
+    outline: none;
+    transition: border-color var(--transition);
+}
+.qty-input:focus { border-color: var(--accent-orange); }
+
+.qty-update-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: var(--font-body);
+    white-space: nowrap;
+}
+.qty-update-btn:hover {
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+}
+
+/* ----- Subtotale ----- */
+.cart-subtotal {
+    font-weight: 700;
+    color: var(--accent-orange);
+    white-space: nowrap;
+}
+
+/* ----- Rimuovi ----- */
+.cart-remove-btn {
+    background: transparent;
+    border: 1px solid rgba(255,68,68,0.3);
+    color: var(--danger);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all var(--transition);
+    font-family: var(--font-body);
+}
+.cart-remove-btn:hover {
+    background: rgba(255,68,68,0.15);
+    border-color: var(--danger);
+    transform: scale(1.1);
+}
+
+/* ----- Riepilogo totale ----- */
+.carrello-summary {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carrello-summary-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.summary-row .label { color: var(--text-muted); }
+.summary-row .value { color: var(--text-primary); font-weight: 600; }
+
+.summary-divider { height: 1px; background: var(--border); }
+
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+}
+.summary-total-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+.summary-total-amount {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* ----- Azioni testa tabella ----- */
+.carrello-actions-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ----- Carrello vuoto ----- */
+.carrello-empty {
+    text-align: center;
+    padding: 100px 24px;
+}
+.carrello-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    opacity: 0.3;
+}
+.carrello-empty h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+.carrello-empty p {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+/* ----- Nota digitale ----- */
+.digital-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255,107,53,0.06);
+    border: 1px solid rgba(255,107,53,0.2);
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+.digital-note .icon { color: var(--accent-orange); font-size: 1rem; }
+
+/* =========================================================
+   RESPONSIVE carrello
+   ========================================================= */
+@media (max-width: 768px) {
+    .carrello-page { padding: 40px 16px 60px; }
+    .carrello-page-title { font-size: 2.2rem; }
+
+    /* Tabella scrollabile orizzontalmente su mobile */
+    .carrello-table-wrap { border-radius: var(--radius); }
+    .carrello-table th,
+    .carrello-table td { padding: 12px 14px; font-size: 0.82rem; }
+    .cart-product-desc { display: none; }
+
+    /* Riepilogo totale: piena larghezza */
+    .carrello-summary { justify-content: stretch; }
+    .carrello-summary-box { min-width: 0; width: 100%; padding: 20px; }
+
+    .carrello-actions-top { flex-direction: column; align-items: stretch; }
+    .carrello-actions-top .btn { text-align: center; }
+}

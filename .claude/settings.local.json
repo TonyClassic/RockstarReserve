@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\jsp\\\\info\")",
+      "Bash(find /c/Users/anton -maxdepth 6 -name \"catalina.out\" 2>/dev/null | head -10 *)",
+      "Bash(find /d/TonyUser -maxdepth 8 -name \"catalina.out\" 2>/dev/null | head -10 *)",
+      "Bash(mv \"D:/TonyUser/WorkSpace/RockstarReserve/src/main/webapp/WEB-INF/view/jsp/\"* \"D:/TonyUser/WorkSpace/RockstarReserve/src/main/webapp/WEB-INF/view/\" *)",
+      "Bash(xargs sed -i 's|/jsp/|/WEB-INF/view/|g')",
+      "PowerShell(\\(Get-ChildItem -Path \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\" -Recurse -ErrorAction SilentlyContinue | Measure-Object\\).Count)",
+      "PowerShell(Copy-Item \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\scripts\\\\checkout-validation.js\" \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\\\\scripts\\\\checkout-validation.js\" -Force)",
+      "PowerShell(Copy-Item \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\WEB-INF\\\\view\\\\ordine\\\\checkout.jsp\" -Destination \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\\\\WEB-INF\\\\view\\\\ordine\\\\checkout.jsp\" -Force)",
+      "Bash(mysql -u root -p'MyTony@L31' rockstarreserve -e \"ALTER TABLE ordini ADD COLUMN prezzo_pagato DECIMAL\\(10,2\\) NOT NULL DEFAULT 0.00;\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.0\\\\bin\\\\mysql.exe\" -u root -p\"MyTony@L31\" rockstarreserve -e \"ALTER TABLE ordini ADD COLUMN prezzo_pagato DECIMAL\\(10,2\\) NOT NULL DEFAULT 0.00;\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.0\\\\bin\\\\mysql.exe\" -u root -p\"MyTony@L31\" rockstarreserve -e \"SELECT id, utente_id, edizione_id, metodo_pagamento, prezzo_pagato FROM ordini ORDER BY id DESC LIMIT 5;\")",
+      "PowerShell(Copy-Item \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\scripts\\\\carrello.js\" -Destination \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\\\\scripts\\\\carrello.js\" -Force)",
+      "PowerShell(Copy-Item \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\WEB-INF\\\\view\\\\carrello\\\\carrello.jsp\" -Destination \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\\\\WEB-INF\\\\view\\\\carrello\\\\carrello.jsp\" -Force)",
+      "PowerShell(Copy-Item \"D:\\\\TonyUser\\\\WorkSpace\\\\RockstarReserve\\\\src\\\\main\\\\webapp\\\\WEB-INF\\\\view\\\\common\\\\header.jsp\" -Destination \"D:\\\\TonyUser\\\\WorkSpace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\RockstarReserve\\\\WEB-INF\\\\view\\\\common\\\\header.jsp\" -Force)"
+    ]
+  }
+}
